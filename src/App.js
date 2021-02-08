@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+//import Hello from './sayHello';
+import Tweet from "./Tweet";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+function App1(){
+
+const [isRed, setRed]=useState(true);
+const[addnumber,setaddnumber]= useState(0);
+
+const[users,setusers]=useState([
+  {name:'juno',age:43},
+  {name:'sumesh',age:47},
+  {name:'susanna',age:16}
+]
+)
+
+const increment=()=>{
+  setaddnumber(addnumber+1)
+  setRed(!isRed);
 }
 
-export default App;
+  return(
+    <div className='app'>
+      {
+        users.map(user=>(
+<Tweet name={user.name} age={user.age} />
+
+        ))}
+      
+    </div>
+  )
+}
+
+export default App1;
